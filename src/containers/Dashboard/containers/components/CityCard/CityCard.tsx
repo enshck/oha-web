@@ -1,4 +1,4 @@
-import { Badge, Box, Button, Heading, HStack, Image, Text, VStack } from "@chakra-ui/react";
+import { Badge, Box, Button, Heading, HStack, Image, Spinner, Text, VStack } from "@chakra-ui/react";
 import { useState, type FC } from "react";
 
 import type { IGetCitiesElement } from "@/shared/api/dto";
@@ -12,10 +12,16 @@ interface CityCardProps {
 
 const CityCard: FC<CityCardProps> = ({ city, onDetailsClick }) => {
   const [hasImage, setHasImage] = useState(true);
+  const [isImageLoading, setIsImageLoading] = useState(true);
   const currentImage = getCityImage(city);
 
   const handleImageError = () => {
+    setIsImageLoading(false);
     setHasImage(false);
+  };
+
+  const handleImageLoad = () => {
+    setIsImageLoading(false);
   };
 
   return (
@@ -30,7 +36,35 @@ const CityCard: FC<CityCardProps> = ({ city, onDetailsClick }) => {
     >
       <Box h="164px" bg="gray.100" position="relative">
         {hasImage ? (
-          <Image src={currentImage} alt={city.name} h="full" w="full" objectFit="cover" onError={handleImageError} />
+          <>
+            <Image
+              src={currentImage}
+              alt={city.name}
+              h="full"
+              w="full"
+              objectFit="cover"
+              onError={handleImageError}
+              onLoad={handleImageLoad}
+              opacity={isImageLoading ? 0 : 1}
+              transition="opacity 0.25s ease"
+            />
+
+            {isImageLoading ? (
+              <VStack
+                position="absolute"
+                inset={0}
+                justify="center"
+                bgGradient="linear(to-br, secondary, sidebarBgColor)"
+                color="primary"
+                gap={2}
+              >
+                <Spinner size="sm" color="primary" />
+                <Text fontSize="xs" letterSpacing="0.1em" textTransform="uppercase" opacity={0.8}>
+                  Loading image
+                </Text>
+              </VStack>
+            ) : null}
+          </>
         ) : (
           <VStack
             h="full"

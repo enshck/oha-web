@@ -4,9 +4,9 @@ import type { SelectRootProps } from "@chakra-ui/react";
 import type { IBaseFieldProps, IOption } from "@/shared/interfaces";
 
 interface SelectProps<T> extends Omit<SelectRootProps, "children" | "collection">, IBaseFieldProps {
+  options: IOption<T>[];
   placeholder?: string;
   onClear?: () => void;
-  options: IOption<T>[];
 }
 
 const Select = <T,>({
@@ -22,7 +22,7 @@ const Select = <T,>({
   const collection = createListCollection({ items: options });
 
   return (
-    <Field.Root invalid={isTouched && !!errorMessage} required={!!isRequired} w={"fit-content"} minW={"200px"}>
+    <Field.Root invalid={isTouched && !!errorMessage} required={!!isRequired}>
       {label && (
         <Field.Label>
           {label} {isRequired && <Field.RequiredIndicator />}

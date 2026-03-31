@@ -38,7 +38,7 @@ const SearchInput: FC<SearchInputProps> = ({ label, value = "", onChange, withCl
   };
 
   return (
-    <Field.Root w={"fit-content"}>
+    <Field.Root>
       {label && (
         <Field.Label>
           {label} <Field.RequiredIndicator />

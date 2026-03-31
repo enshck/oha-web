@@ -25,12 +25,15 @@ const Header: FC<IHeaderProps> = ({ filters, setFilters }) => {
       w={"full"}
       bg={"sidebarBgColor"}
       p={4}
-      justifyContent={"flex-end"}
       shadow={"normal"}
       position={"sticky"}
       top={0}
       zIndex={10}
       backdropFilter={"blur(8px)"}
+      display={{ base: "flex", md: "grid" }}
+      justifyContent={"flex-end"}
+      gridTemplateColumns={{ base: "repeat(3, 1fr)", md: "300px 200px 200px" }}
+      flexDirection={{ base: "column", md: "row" }}
     >
       <SearchInput onChange={(value) => onSelectFilter(value, "city")} placeholder="Find city" />
       <Select

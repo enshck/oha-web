@@ -1,3 +1,4 @@
+import config from "@/config";
 import type { IGetCitiesElement } from "@/shared/api/dto";
 
 const normalizeImageKey = (value: string) =>
@@ -10,5 +11,5 @@ const normalizeImageKey = (value: string) =>
 export const getCityImage = (city: IGetCitiesElement) => {
   const imageKey = `${normalizeImageKey(city.name)}-${normalizeImageKey(city.country)}`;
 
-  return `/cities/${imageKey}.png`;
+  return `${config.s3SharedCities}${imageKey}.png`;
 };
