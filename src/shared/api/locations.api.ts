@@ -17,6 +17,8 @@ export const useGetCities = (
   useQuery({
     queryKey: [SharedQuery.getCities, [continent, country, search].join("-")],
     queryFn: () => sharedApi.getCities({ continent, country, search }),
+    toggleGlobalLoader: false,
+    placeholderData: (prevData) => prevData,
     ...options,
   });
 

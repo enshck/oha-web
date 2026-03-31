@@ -21,7 +21,17 @@ const Header: FC<IHeaderProps> = ({ filters, setFilters }) => {
   };
 
   return (
-    <HStack w={"full"} bg={"sidebarBgColor"} p={4} justifyContent={"flex-end"} shadow={"normal"}>
+    <HStack
+      w={"full"}
+      bg={"sidebarBgColor"}
+      p={4}
+      justifyContent={"flex-end"}
+      shadow={"normal"}
+      position={"sticky"}
+      top={0}
+      zIndex={10}
+      backdropFilter={"blur(8px)"}
+    >
       <SearchInput onChange={(value) => onSelectFilter(value, "city")} placeholder="Find city" />
       <Select
         options={getOptions(countries)}

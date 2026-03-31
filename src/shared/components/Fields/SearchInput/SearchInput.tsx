@@ -25,9 +25,7 @@ const SearchInput: FC<SearchInputProps> = ({ label, value = "", onChange, withCl
 
   // Trigger onChange when debounced value changes
   useEffect(() => {
-    if (debouncedValue !== value && debouncedValue !== undefined) {
-      onChange(debouncedValue);
-    }
+    onChange(debouncedValue);
   }, [debouncedValue, onChange, value]);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
