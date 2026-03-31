@@ -1,4 +1,4 @@
-import { Field, Input as ChakraInput, InputGroup } from "@chakra-ui/react";
+import { CloseButton, Field, Input as ChakraInput, InputGroup } from "@chakra-ui/react";
 import type { InputProps as ChakraInputProps } from "@chakra-ui/react";
 import { useEffect, useState, type FC, type ChangeEvent } from "react";
 import { CiSearch } from "react-icons/ci";
@@ -10,9 +10,10 @@ const SEARCH_INPUT_DEBOUNCE_TIMEOUT = 500;
 interface SearchInputProps extends Omit<ChakraInputProps, "onChange"> {
   onChange: (value: string) => void;
   label?: string;
+  withClearButton?: boolean;
 }
 
-const SearchInput: FC<SearchInputProps> = ({ label, value = "", onChange, ...inputProps }) => {
+const SearchInput: FC<SearchInputProps> = ({ label, value = "", onChange, withClearButton = true, ...inputProps }) => {
   const [inputValue, setInputValue] = useState<string>(String(value));
 
   const debouncedValue = useDebounce<string>(inputValue, SEARCH_INPUT_DEBOUNCE_TIMEOUT);
@@ -33,6 +34,11 @@ const SearchInput: FC<SearchInputProps> = ({ label, value = "", onChange, ...inp
     setInputValue(event.target.value);
   };
 
+  const handleClear = () => {
+    setInputValue("");
+    onChange("");
+  };
+
   return (
     <Field.Root w={"fit-content"}>
       {label && (
@@ -40,7 +46,21 @@ const SearchInput: FC<SearchInputProps> = ({ label, value = "", onChange, ...inp
           {label} <Field.RequiredIndicator />
         </Field.Label>
       )}
-      <InputGroup startElement={<CiSearch />}>
+      <InputGroup
+        startElement={<CiSearch />}
+        endElement={
+          withClearButton ? (
+            <CloseButton
+              size="xs"
+              variant="ghost"
+              color={"blackAlpha.700"}
+              aria-label="Clear search"
+              onMouseDown={(event) => event.preventDefault()}
+              onClick={handleClear}
+            />
+          ) : undefined
+        }
+      >
         <ChakraInput {...inputProps} value={inputValue} onChange={handleInputChange} />
       </InputGroup>
     </Field.Root>

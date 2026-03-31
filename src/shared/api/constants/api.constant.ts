@@ -1,8 +1,9 @@
 import config from "@/config";
 
 export default {
-  PROCESS: {
-    CREATE_PROCESS: `${config.baseApiUrl}/process`,
-    GET_PROCESS_STATUS: `${config.baseApiUrl}/process`,
+  LOCATIONS: {
+    GET_CITIES: `${config.baseApiUrl}/locations/cities`,
+    GET_COUNTRIES: `${config.baseApiUrl}/locations/countries`,
+    GET_CONTINENTS: `${config.baseApiUrl}/locations/continents`,
   },
 };

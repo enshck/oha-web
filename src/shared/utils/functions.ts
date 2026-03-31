@@ -1,6 +1,6 @@
 import type { AxiosError } from "axios";
 
-import type { IErrorResponse } from "../interfaces";
+import type { IErrorResponse, IOption } from "../interfaces";
 
 export function prepareErrorResponsePayload(error: Error | IErrorResponse): IErrorResponse {
   const DEFAULT_ERROR_MESSAGE = "Something went wrong. Try Again";
@@ -30,3 +30,9 @@ export const debounce = <T extends (...args: any[]) => any>(func: T, waitFor = 5
 
   return debounced;
 };
+
+export const getOptions = <T>(data: T[]): IOption<T>[] =>
+  data.map((elem) => ({
+    label: `${elem}`,
+    value: elem,
+  }));

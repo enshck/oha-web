@@ -1,1 +1,1 @@
-export * from "./process.dto";
+export * from "./locations.dto";

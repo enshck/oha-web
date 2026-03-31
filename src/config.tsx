@@ -4,7 +4,7 @@ const REACT_APP_ENV = import.meta.env.VITE_APP_ENV || "dev";
 
 const dev: IConfiguration = {
   env: REACT_APP_ENV,
-  baseApiUrl: "http://localhost:3000",
+  baseApiUrl: "http://localhost:4000/api/v1",
 };
 
 const qa: IConfiguration = {

@@ -5,6 +5,7 @@ import type { IBaseFieldProps, IOption } from "@/shared/interfaces";
 
 interface SelectProps<T> extends Omit<SelectRootProps, "children" | "collection">, IBaseFieldProps {
   placeholder?: string;
+  onClear?: () => void;
   options: IOption<T>[];
 }
 
@@ -15,26 +16,29 @@ const Select = <T,>({
   isTouched,
   options,
   placeholder,
+  onClear,
   ...selectProps
 }: SelectProps<T>) => {
   const collection = createListCollection({ items: options });
 
   return (
-    <Field.Root invalid={isTouched && !!errorMessage} required={!!isRequired}>
+    <Field.Root invalid={isTouched && !!errorMessage} required={!!isRequired} w={"fit-content"} minW={"200px"}>
       {label && (
         <Field.Label>
-          {label} <Field.RequiredIndicator />
+          {label} {isRequired && <Field.RequiredIndicator />}
         </Field.Label>
       )}
-      <ChakraSelect.Root collection={collection} {...selectProps} invalid>
+      <ChakraSelect.Root collection={collection} {...selectProps}>
         <ChakraSelect.Control>
           <ChakraSelect.Trigger>
             <ChakraSelect.ValueText placeholder={placeholder} />
           </ChakraSelect.Trigger>
-          <ChakraSelect.IndicatorGroup>
-            <ChakraSelect.Indicator />
-            <ChakraSelect.ClearTrigger />
-          </ChakraSelect.IndicatorGroup>
+          {onClear && (
+            <ChakraSelect.IndicatorGroup>
+              <ChakraSelect.Indicator />
+              <ChakraSelect.ClearTrigger onClick={onClear} cursor={"pointer"} />
+            </ChakraSelect.IndicatorGroup>
+          )}
         </ChakraSelect.Control>
         <ChakraSelect.Positioner>
           <ChakraSelect.Content>
