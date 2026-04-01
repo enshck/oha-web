@@ -19,6 +19,8 @@ const config: Config = {
     "!src/**/*.test.tsx",
     "!src/**/index.ts",
     "!src/**/index.tsx",
+    "!src/shared/interfaces/**",
+    "!src/shared/providers/**/interfaces/**",
     "!src/main.tsx",
     "!src/vite-env.d.ts",
   ],
