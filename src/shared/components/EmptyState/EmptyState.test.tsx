@@ -4,6 +4,12 @@ import EmptyState from "./EmptyState";
 import { render } from "../../../__tests__/setup/test-utils";
 
 describe("EmptyState", () => {
+  it("renders icon when icon prop is provided", () => {
+    render(<EmptyState title="No data" icon={<span>icon-content</span>} />);
+
+    expect(screen.getByText("icon-content")).toBeInTheDocument();
+  });
+
   it("renders title and optional description", () => {
     render(<EmptyState title="No data" description="Try again later" />);
 
