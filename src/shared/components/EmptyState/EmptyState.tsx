@@ -17,25 +17,23 @@ interface EmptyStateProps extends Partial<EmptyStateChakra.RootProps> {
   actionButton?: ActionButton;
 }
 
-const EmptyState: FC<EmptyStateProps> = ({ title, description, icon, actionButton, ...rootProps }) => {
-  return (
-    <EmptyStateChakra.Root {...rootProps}>
-      <EmptyStateChakra.Content>
-        {icon && <EmptyStateChakra.Indicator>{icon}</EmptyStateChakra.Indicator>}
-        <VStack textAlign="center">
-          <EmptyStateChakra.Title>{title}</EmptyStateChakra.Title>
-          {description && <EmptyStateChakra.Description>{description}</EmptyStateChakra.Description>}
-        </VStack>
-        {actionButton && (
-          <ButtonGroup>
-            <Button variant={actionButton.variant} onClick={actionButton.onClick} disabled={actionButton.disabled}>
-              {actionButton.icon} {actionButton.text}
-            </Button>
-          </ButtonGroup>
-        )}
-      </EmptyStateChakra.Content>
-    </EmptyStateChakra.Root>
-  );
-};
+const EmptyState: FC<EmptyStateProps> = ({ title, description, icon, actionButton, ...rootProps }) => (
+  <EmptyStateChakra.Root {...rootProps} h={"full"} display={"flex"} justifyContent={"center"}>
+    <EmptyStateChakra.Content>
+      {icon && <EmptyStateChakra.Indicator>{icon}</EmptyStateChakra.Indicator>}
+      <VStack textAlign="center">
+        <EmptyStateChakra.Title>{title}</EmptyStateChakra.Title>
+        {description && <EmptyStateChakra.Description>{description}</EmptyStateChakra.Description>}
+      </VStack>
+      {actionButton && (
+        <ButtonGroup>
+          <Button variant={actionButton.variant} onClick={actionButton.onClick} disabled={actionButton.disabled}>
+            {actionButton.icon} {actionButton.text}
+          </Button>
+        </ButtonGroup>
+      )}
+    </EmptyStateChakra.Content>
+  </EmptyStateChakra.Root>
+);
 
 export default EmptyState;

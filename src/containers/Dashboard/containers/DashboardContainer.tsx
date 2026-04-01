@@ -1,4 +1,4 @@
-import { Box, SimpleGrid, VStack } from "@chakra-ui/react";
+import { SimpleGrid, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 
 import { useGetCities } from "@/shared/api";
@@ -32,9 +32,9 @@ const DashboardContainer = () => {
   };
 
   return (
-    <VStack w="full" align="stretch" gap={4}>
+    <VStack w="full" align="stretch" gap={4} h="full">
       <Header filters={filters} setFilters={setFilters} />
-      <Box px={{ base: 4, md: 6 }} pb={{ base: 4, md: 6 }}>
+      <VStack p={{ base: 4, md: 6 }} flex={1}>
         {!cities.length && !citiesLoading ? (
           <EmptyState
             title="No cities found"
@@ -42,13 +42,13 @@ const DashboardContainer = () => {
             minH="320px"
           />
         ) : (
-          <SimpleGrid columns={{ base: 1, sm: 2, lg: 3, xl: 4 }} gap={4}>
+          <SimpleGrid columns={{ base: 1, sm: 2, lg: 3, xl: 4 }} gap={4} w={"full"}>
             {cities.map((city) => (
               <CityCard key={city.id} city={city} onDetailsClick={handleOpenCityDetails} />
             ))}
           </SimpleGrid>
         )}
-      </Box>
+      </VStack>
     </VStack>
   );
 };

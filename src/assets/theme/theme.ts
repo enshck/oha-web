@@ -14,7 +14,6 @@ const config = defineConfig({
       fontWeights: foundations.fontWeight,
       zIndex: foundations.zIndex,
     },
-    textStyles: foundations.textStyles,
     recipes,
   },
 });

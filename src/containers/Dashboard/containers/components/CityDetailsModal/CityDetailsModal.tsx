@@ -37,7 +37,7 @@ const CityDetailsModal: FC<CityDetailsModalProps> = ({ city }) => {
             justify="center"
             align="flex-start"
             px={{ base: 6, md: 10 }}
-            bgGradient="linear(to-br, secondary, sidebarBgColor)"
+            bgGradient="linear(to-br, secondary, headerBgColor)"
             color="primary"
             gap={2}
           >

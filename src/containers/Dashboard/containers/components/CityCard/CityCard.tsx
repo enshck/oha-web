@@ -54,7 +54,7 @@ const CityCard: FC<CityCardProps> = ({ city, onDetailsClick }) => {
                 position="absolute"
                 inset={0}
                 justify="center"
-                bgGradient="linear(to-br, secondary, sidebarBgColor)"
+                bgGradient="linear(to-br, secondary, headerBgColor)"
                 color="primary"
                 gap={2}
               >
@@ -72,7 +72,7 @@ const CityCard: FC<CityCardProps> = ({ city, onDetailsClick }) => {
             justify="center"
             align="flex-start"
             px={5}
-            bgGradient="linear(to-br, secondary, sidebarBgColor)"
+            bgGradient="linear(to-br, secondary, headerBgColor)"
             color="primary"
             gap={1}
           >
@@ -87,7 +87,7 @@ const CityCard: FC<CityCardProps> = ({ city, onDetailsClick }) => {
 
       <VStack align="stretch" gap={3} p={4}>
         <VStack align="stretch" gap={2}>
-          <HStack gap={2} wrap="wrap">
+          <HStack gap={2}>
             <Badge colorPalette="blue" variant="subtle">
               {city.country}
             </Badge>

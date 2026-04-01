@@ -23,7 +23,7 @@ const Header: FC<IHeaderProps> = ({ filters, setFilters }) => {
   return (
     <HStack
       w={"full"}
-      bg={"sidebarBgColor"}
+      bg={"headerBgColor"}
       p={4}
       shadow={"normal"}
       position={"sticky"}
