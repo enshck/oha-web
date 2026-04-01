@@ -26,6 +26,8 @@ VITE_S3_SHARED_CITIES=https://oha-web-test-515966517637-eu-central-1-an.s3.eu-ce
 VITE_APP_ENV=dev
 ```
 
+3. (optional) if you change default API port please update it in config file(src/config.tsx) as well(e.g baseApiUrl: "http://localhost:4000/api/v1")
+
 ## Run Locally
 
 Start development server:
