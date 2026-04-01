@@ -8,23 +8,8 @@ const dev: IConfiguration = {
   s3SharedCities: import.meta.env.VITE_S3_SHARED_CITIES,
 };
 
-const qa: IConfiguration = {
-  ...dev,
-};
-
-const uat: IConfiguration = {
-  ...dev,
-};
-
-const prod: IConfiguration = {
-  ...dev,
-};
-
 const config: IConfigurationObject = {
   dev,
-  qa,
-  uat,
-  prod,
 };
 
 const configElement: IConfiguration = config[REACT_APP_ENV];
