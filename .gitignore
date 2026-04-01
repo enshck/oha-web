@@ -30,3 +30,6 @@ licenses.json
 
 # Yarn install state
 **/install-state.gz
+
+# Testing
+/coverage
