@@ -16,7 +16,8 @@ yarn install
 ```
 
 2. Create `.env` from `.env.sample` file
-   I uploaded some images for the cities to my S3 bucket and made it public for read, please do not forget to set VITE_S3_SHARED_CITIES
+
+I uploaded some images for the cities to my S3 bucket and made it public for read, please do not forget to set VITE_S3_SHARED_CITIES
 
 Example minimal configuration:
 
