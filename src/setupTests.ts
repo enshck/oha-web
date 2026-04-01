@@ -1,5 +1,16 @@
 import "@testing-library/jest-dom";
 
+// Polyfill for structuredClone - handle edge cases
+if (!global.structuredClone) {
+  global.structuredClone = (val) => {
+    try {
+      return JSON.parse(JSON.stringify(val));
+    } catch {
+      return val;
+    }
+  };
+}
+
 // Mock matchMedia
 Object.defineProperty(window, "matchMedia", {
   writable: true,

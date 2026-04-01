@@ -23,10 +23,10 @@ const SearchInput: FC<SearchInputProps> = ({ label, value = "", onChange, withCl
     setInputValue(String(value));
   }, [value]);
 
-  // Trigger onChange when debounced value changes
   useEffect(() => {
     onChange(debouncedValue);
-  }, [debouncedValue, onChange, value]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedValue]);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);

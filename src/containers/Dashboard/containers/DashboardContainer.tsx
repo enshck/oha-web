@@ -19,7 +19,7 @@ const DashboardContainer = () => {
     continent: null,
   });
 
-  const { data: cities = [], isLoading: citiesLoading } = useGetCities({
+  const { data: cities, isLoading: citiesLoading } = useGetCities({
     search: filters.city.length ? filters.city : undefined,
     country: filters.country || undefined,
     continent: filters.continent || undefined,
@@ -35,7 +35,7 @@ const DashboardContainer = () => {
     <VStack w="full" align="stretch" gap={4} h="full">
       <Header filters={filters} setFilters={setFilters} />
       <VStack p={{ base: 4, md: 6 }} flex={1}>
-        {!cities.length && !citiesLoading ? (
+        {!cities?.length && !citiesLoading ? (
           <EmptyState
             title="No cities found"
             description="Try changing the search query or clearing the active filters."
@@ -43,7 +43,7 @@ const DashboardContainer = () => {
           />
         ) : (
           <SimpleGrid columns={{ base: 1, sm: 2, lg: 3, xl: 4 }} gap={4} w={"full"}>
-            {cities.map((city) => (
+            {cities?.map((city) => (
               <CityCard key={city.id} city={city} onDetailsClick={handleOpenCityDetails} />
             ))}
           </SimpleGrid>
